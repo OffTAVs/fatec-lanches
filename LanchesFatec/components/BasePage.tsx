@@ -12,9 +12,10 @@ interface BasePageProps {
   title: string
   subtitle?: string
   children?: React.ReactNode
+  showCart?: boolean // 👈 NOVO
 }
 
-export default function BasePage({ title, subtitle, children }: BasePageProps) {
+export default function BasePage({ title, subtitle, children, showCart = true }: BasePageProps) {
   const router = useRouter()
   const [isValidToken, setIsValidToken] = useState<boolean | null>(null);
 
@@ -88,7 +89,7 @@ export default function BasePage({ title, subtitle, children }: BasePageProps) {
       <View style={styles.children}>
         {children}
       </View>
-      <NavBar />
+      <NavBar showCart={showCart} />
     </View>
   );
 }

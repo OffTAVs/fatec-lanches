@@ -35,7 +35,7 @@ export default function EditProfile() {
     };
 
     return (
-        <BasePage title='Edite seu perfil'>
+        <BasePage title='Edite seu perfil' showCart={false}>
             <View style={styles.edit}>
                 <Image 
                     source={profileImage ? { uri: profileImage } : { uri: 'https://cdn-icons-png.flaticon.com/512/3106/3106921.png'}}
@@ -46,7 +46,7 @@ export default function EditProfile() {
                 <Input label="E-Mail" value={user.email}/>
                 <View style={styles.container}>     
                     <Btn>Salvar edição</Btn>               
-                    <TouchableOpacity onPress={ () =>(router.push('/cart'))}>
+                    <TouchableOpacity onPress={ () =>(router.push('/profile'))}>
                         <TextFont style={{fontSize:20}}>Voltar <Octicons name="undo" size={20} color="black" /></TextFont>
                     </TouchableOpacity>
                 </View>
