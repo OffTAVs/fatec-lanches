@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "LanchesFatec",
+    "slug": "LanchesFatec",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon/logo_fatec_lanches.png",
+    "scheme": "lanchesfatec",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#f0f0f0",
+        "foregroundImage": "./assets/icon/logo_fatec_lanches.png",
+        "backgroundImage": "./assets/icon/logo_fatec_lanches.png",
+        "monochromeImage": "./assets/icon/logo_fatec_lanches.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.lizandra.ferrari.LanchesFatec"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/icon/logo_fatec_lanches.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "64f17fd0-e3e5-425f-a90b-b54c6925ad0b"
+      }
+    }
+  }
+}
