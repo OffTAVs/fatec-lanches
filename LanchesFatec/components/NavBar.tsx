@@ -5,7 +5,7 @@ import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import TextFont from '@/components/TextFont';
 
-export default function NavBar() {
+export default function NavBar({ showCart = true })  {
   const router = useRouter();
 
   return (
@@ -32,12 +32,14 @@ export default function NavBar() {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.cartButton}
-        onPress={() => router.push('/cart')}
-      >
-        <MaterialCommunityIcons name="cart-outline" size={24} color="white" />
-      </TouchableOpacity>
+      {showCart && (
+  <TouchableOpacity
+    style={styles.cartButton}
+    onPress={() => router.push('/cart')}
+  >
+    <MaterialCommunityIcons name="cart-outline" size={24} color="white" />
+  </TouchableOpacity>
+)}
     </View>
   );
 }

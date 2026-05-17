@@ -37,7 +37,7 @@ export default function Profile() {
     }
 
     return (
-        <BasePage title="Perfil" subtitle="Gerencie suas informações">
+        <BasePage title="Perfil" subtitle="Gerencie suas informações" showCart={false}>
             <ProfileCard
                 nome={user.nome}
                 email={user.email}
