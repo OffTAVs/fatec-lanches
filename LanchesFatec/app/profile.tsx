@@ -5,15 +5,53 @@ import TextFont from '@/components/TextFont';
 import * as SecureStore from 'expo-secure-store';
 import { useRouter } from "expo-router";
 import ProfileCard from "@/components/profileCard";
+import { useState, useEffect } from 'react';
+import api from '@/utils/api';
 
 export default function Profile() {
     const router = useRouter();
-
-    const user = {
-        nome: 'Fulano da Silva Souza',
-        email: 'fulano.silva@fatec.sp.gov.br',
+    const [user, setUser] = useState({
+        nome: '',
+        email: '',
         profileImage: null,
-    };
+    });
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const token = await SecureStore.getItemAsync('token');
+                if (!token) {
+                    router.replace('/login');
+                    return;
+                }
+                const response = await api.get('/usuarios/me', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setUser({
+                    nome: response.data.nome,
+                    email: response.data.email,
+                    profileImage: response.data.foto || null,
+                });
+            } catch (error) {
+                console.error('Erro ao buscar usuário:', error);
+                Alert.alert('Erro', 'Não foi possível carregar os dados do perfil.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUser();
+    }, []);
+
+    if (loading) {
+        return (
+            <BasePage title="Perfil" subtitle="Gerencie suas informações" showCart={false}>
+                <TextFont>Carregando...</TextFont>
+            </BasePage>
+        );
+    }
 
     function issues() {
         Alert.alert('Aviso!', 'Você será redirecionado para nosso suporte', [
